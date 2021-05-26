@@ -5,7 +5,7 @@ export const useAdd = ( initialState = {} ) => {
     const [addValue, setValues] = useState(initialState);
     
 
-    const handleClick = ({product, size, description, price  }) => {
+    const handleClick = (product, size, description, price ) => {
         setValues({
             ...addValue,
             producto: product,

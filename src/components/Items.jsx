@@ -21,16 +21,14 @@ const Items = () => {
 
     const AgregarItem = (compras) => {dispatch(AddProduct(compras))}
 
-    useEffect(() => {
-        AgregarItem({
-            id: uuid(),
-            nombre,
-            fecha,
-            hora,
-            sintomas
-        })
-        
-    }, [handleClick])
+    AgregarItem({
+        id: uuid(),
+        nombre,
+        fecha,
+        hora,
+        sintomas
+    })
+
 
     return (
         <div className="card">
@@ -49,7 +47,7 @@ const Items = () => {
                                         <p className="card-text">{db.description}</p>
                                         <p className="card-text">{db.size}</p>
                                         <p className="card-text">{db.price}</p>
-                                        <a onClick={handleClick(db.product, db.size, db.description, db.price)} className="btn btn-primary">Agregar al carrito</a>
+                                        <button onClick={handleClick}  className="btn btn-primary">Agregar al carrito</button>
                                     </div>
                                 </div>
                             </div>
