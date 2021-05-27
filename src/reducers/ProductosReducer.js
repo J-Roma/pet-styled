@@ -11,14 +11,14 @@ export default function (state = initialState, action) {
 
             return {
                 ...state,
-                citas: [...state.compras, action.payload]
+                compras: [...state.compras, action.payload]
             }
 
         case types.borrar:
 
             return {
                 ...state,
-                citas: state.compras.filter(compras => compras.id !== action.payload)
+                compras: state.compras.filter(compras => compras.id !== action.payload)
             }
 
         default:

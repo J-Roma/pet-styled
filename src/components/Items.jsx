@@ -15,20 +15,24 @@ const Items = () => {
         precio: ''
     })
 
-    const {nombre, fecha, hora, sintomas} = addValue ;
+    const {producto, tamaño, descripcion, precio} = addValue ;
 
     const dispatch = useDispatch();
 
     const AgregarItem = (compras) => {dispatch(AddProduct(compras))}
 
-    AgregarItem({
-        id: uuid(),
-        nombre,
-        fecha,
-        hora,
-        sintomas
-    })
+    const handle =  async (product, description, size, price) => {
+        await handleClick(product, description, size, price) 
 
+        await AgregarItem({
+            id: uuid(),
+            producto,
+            tamaño,
+            descripcion,
+            precio
+        })
+        await console.log(addValue);
+    }
 
     return (
         <div className="card">
@@ -47,7 +51,7 @@ const Items = () => {
                                         <p className="card-text">{db.description}</p>
                                         <p className="card-text">{db.size}</p>
                                         <p className="card-text">{db.price}</p>
-                                        <button onClick={handleClick}  className="btn btn-primary">Agregar al carrito</button>
+                                        <button id={db.id} onClick={() => {handle(db.product, db.description, db.size, db.price) }}  className="btn btn-primary">Agregar al carrito</button>
                                     </div>
                                 </div>
                             </div>

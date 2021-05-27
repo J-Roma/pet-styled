@@ -22,5 +22,5 @@ export const db = [
         price: '$120000 COP',
         size: 'Raza Pequeña',
         description: 'Campera Pancho Rabane, Color Rosa, Raza Pequeña, Material del alta calidad.'
-    },
+    }
 ]
