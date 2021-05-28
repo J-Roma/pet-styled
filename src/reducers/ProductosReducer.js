@@ -5,17 +5,15 @@ const initialState = {
 }
 
 export default function (state = initialState, action) {
-    switch (action.types) {
+    switch (action.type) {
         
         case types.agregar:
-
             return {
                 ...state,
                 compras: [...state.compras, action.payload]
             }
 
         case types.borrar:
-
             return {
                 ...state,
                 compras: state.compras.filter(compras => compras.id !== action.payload)

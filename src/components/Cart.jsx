@@ -1,6 +1,11 @@
 import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { AddProduct } from '../actions/AddAction'
 
 const Cart = () => {
+    const dispatch = useDispatch()
+    const carrito = useSelector((state) => state.compras)
+
     return (
         <div className="card">
             <div className="card-header">
@@ -17,13 +22,18 @@ const Cart = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        
+                    {
+                            carrito.compras.map(compras => (
+                                <tr key={compras.id}>
+                                    <th scope="row">{compras.producto}</th>
+                                    <td>{compras.precio}</td>
+                                    <td>{compras.descripcion}</td>
+                                    <td>{compras.tamaño}</td>
+                                </tr>
+                            ))
+                        }
+
+
                     </tbody>
                 </table>
             </div>

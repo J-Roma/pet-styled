@@ -21,17 +21,17 @@ const Items = () => {
 
     const AgregarItem = (compras) => {dispatch(AddProduct(compras))}
 
-    const handle =  async (product, description, size, price) => {
-        await handleClick(product, description, size, price) 
+    const handle =  (product, description, size, price) => {
+         handleClick(product, description, size, price) 
 
-        await AgregarItem({
+         AgregarItem({
             id: uuid(),
             producto,
             tamaño,
             descripcion,
             precio
         })
-        await console.log(addValue);
+         console.log(addValue);
     }
 
     return (
@@ -43,17 +43,23 @@ const Items = () => {
                 <div className="row">
                     {
                         db.map(db => (
-                            <div className="col-sm-6" key={db.id}>
-                                <div className="card" >
-                                    <img src={db.img} className="card-img-top" alt={db.product} />
-                                    <div className="card-body">
-                                        <h5 className="card-title">{db.product}</h5>
-                                        <p className="card-text">{db.description}</p>
-                                        <p className="card-text">{db.size}</p>
-                                        <p className="card-text">{db.price}</p>
-                                        <button id={db.id} onClick={() => {handle(db.product, db.description, db.size, db.price) }}  className="btn btn-primary">Agregar al carrito</button>
+                            <div className="col-sm-12" key={db.id}>
+                            <div class="card mb-3">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <img src={db.img} className="card-img-top" alt={db.product} />
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 className="card-title">{db.product}</h5>
+                                            <p className="card-text">{db.description}</p>
+                                            <p className="card-text">{db.size}</p>
+                                            <p className="card-text">{db.price}</p>
+                                            <button id={db.id} onClick={() => { handle(db.product, db.description, db.size, db.price) }} className="btn btn-primary">Agregar al carrito</button>
+                                        </div>
                                     </div>
                                 </div>
+                            </div>
                             </div>
                         ))
                     }
@@ -64,3 +70,23 @@ const Items = () => {
 }
 
 export default Items
+
+
+{/* <div className="col-sm-6" key={db.id}>
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img src={db.img} className="card-img-top" alt={db.product} />
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 className="card-title">{db.product}</h5>
+                <p className="card-text">{db.description}</p>
+                <p className="card-text">{db.size}</p>
+                <p className="card-text">{db.price}</p>
+                <button id={db.id} onClick={() => { handle(db.product, db.description, db.size, db.price) }} className="btn btn-primary">Agregar al carrito</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div> */}
